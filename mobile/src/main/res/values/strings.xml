@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CamControl</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="shortcut_photo">Take picture</string>
+    <string name="shortcut_video">Toggle Video</string>
+    <string name="shortcut_off">Turn off</string>
+    <string name="shortcut_disabled">Disabled</string>
+    <string name="photo_tile_title">Take Photo</string>
+</resources>

@@ -1,0 +1,56 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <shortcut
+        android:shortcutId="off"
+        android:enabled="true"
+        android:icon="@drawable/ic_camera_off"
+        android:shortcutShortLabel="@string/shortcut_off"
+        android:shortcutLongLabel="@string/shortcut_off"
+        android:shortcutDisabledMessage="@string/shortcut_off">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.chernowii.camcontrol"
+            android:targetClass="com.chernowii.camcontrol.MainActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+    <shortcut
+        android:shortcutId="photo"
+        android:enabled="true"
+        android:icon="@drawable/ic_camera_photo"
+        android:shortcutShortLabel="@string/shortcut_photo"
+        android:shortcutLongLabel="@string/shortcut_photo"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.chernowii.camcontrol"
+            android:targetClass="com.chernowii.camcontrol.MainActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="video"
+        android:enabled="true"
+        android:icon="@drawable/ic_camera_video"
+        android:shortcutShortLabel="@string/shortcut_video"
+        android:shortcutLongLabel="@string/shortcut_video"
+        android:shortcutDisabledMessage="@string/shortcut_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.chernowii.camcontrol"
+            android:targetClass="com.chernowii.camcontrol.MainActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+    </shortcut>
+</shortcuts>
+
+

@@ -1,18 +1,17 @@
 package com.chernowii.camcontrol;
 
-import android.graphics.drawable.Icon;
 import android.os.Build;
 import android.service.quicksettings.TileService;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.chernowii.camcontrol.gpApi.Constants;
+import com.chernowii.camcontrol.camera.goproAPI.*;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
-import okhttp3.Headers;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -47,7 +46,7 @@ public class PhotoTile extends TileService {
                 .url(HttpUrl.get(Constants.cameraModes.photoMode))
                 .build();
         final Request shutter_request = new Request.Builder()
-                .url(HttpUrl.get(Constants.gpShutter))
+                .url(HttpUrl.get(Constants.Shutter.shutter))
                 .build();
 
         client.newCall(photo_mode_request).enqueue(new Callback() {
@@ -56,8 +55,11 @@ public class PhotoTile extends TileService {
             }
 
             @Override public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
+                if (!response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"GoPro not connected!",Toast.LENGTH_SHORT).show();
+                }
+                getQsTile().setLabel("Taken!");
+                getQsTile().updateTile();
                 client.newCall(shutter_request).enqueue(new Callback() {
                     @Override public void onFailure(Call call, IOException e) {
                         e.printStackTrace();
@@ -66,7 +68,7 @@ public class PhotoTile extends TileService {
                     @Override public void onResponse(Call call, Response response) throws IOException {
                         if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
 
-                        getQsTile().setLabel("Taken!");
+                        getQsTile().setLabel("Take Photo");
                         getQsTile().updateTile();
 
                     }
@@ -75,8 +77,7 @@ public class PhotoTile extends TileService {
             }
         });
         //send command
-        getQsTile().setLabel("Take Photo");
-        getQsTile().updateTile();
+
     }
 
     @Override

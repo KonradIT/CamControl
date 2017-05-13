@@ -10,6 +10,12 @@ Open source vendor agnostic client application to interface with most popular sp
 - Have all the features frmom the vendor's client
 - Run without Google Play Services
 
+### Mockup of the app UI:
+
+*Disclaimer: Not a designer.*
+
+![](https://i.imgur.com/6NyLUrL.png)
+
 ### Works with:
 
 - GoPro - [API](http://github.com/konradit/goprowifihack)

@@ -39,7 +39,7 @@ The app must *at least* have the following features regardless of camera used:
 
 I maintain the GoPro Wifi API and I will be doing the GoPro support, if you want to add support for your action camera:
 
-- See the /camera/goproAPI folder, this is what provides the app with instructions and assets on how to connect to a GoPro camera, add a new folder inside /camera/ named <camera name>API, inside you'll need to place the following files: 
+- See the /camera/goproAPI folder, this is what provides the app with instructions and assets on how to connect to a GoPro camera, add a new folder inside /camera/ named ```camera name```API, inside you'll need to place the following files: 
 	- Camera.java: Details about the camera(s) itself: ```model_name``` array, ```ip_address``` as a string, ```baseURL```, ```statusURL```, ```settingsURL```, ```commandURL``` as string (with :port if needed), ```connectionMsg``` array as string (this is to check if the camera is connected, first item should be a URL and second item should be a string), ```info``` array with information from the vendor (eg: vendor name, vendor country, vendor website)
 	- Constants.java: Host your commands in this file, I tend to follow a Video/Photo/MultiShot/Setup/Command structure which is easy to understand and use. Other cameras are different but try to stick to that structure.
 	- Live.java: This should have a function called ```getStream``` that returns a Uri or a Video that ExoPlayer can play.

@@ -5,4 +5,5 @@ package com.chernowii.camcontrol.camera.goproAPI;
  */
 
 public class Camera {
+    public static final String connectionURL = "http://10.5.5.9:8080";
 }

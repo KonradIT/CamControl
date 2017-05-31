@@ -20,13 +20,15 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView2" />
+        android:id="@+id/camera_connect_status" />
 
     <Button
-        android:text="Connect"
+        android:id="@+id/connect_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/camera_connect_status"
         android:layout_centerHorizontal="true"
-        android:id="@+id/button2" />
+        android:text="Connect"
+        android:textAppearance="@style/TextAppearance.Design.Tab"
+        android:visibility="visible" />
 </RelativeLayout>

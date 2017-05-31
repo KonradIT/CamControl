@@ -7,7 +7,7 @@ Open source vendor agnostic client application to interface with most popular sp
 - Open source and login-free
 - Virtually permissionless
 - Support most action cameras
-- Have all the features frmom the vendor's client
+- Have all the features from the vendor's client
 - Run without Google Play Services
 
 ### Mockup of the app UI:

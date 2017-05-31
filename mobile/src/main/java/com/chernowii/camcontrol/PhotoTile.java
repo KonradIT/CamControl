@@ -43,10 +43,10 @@ public class PhotoTile extends TileService {
     public void onClick() {
         Log.d(LOG_TAG, "onClick state = " + Integer.toString(getQsTile().getState()));
         final Request photo_mode_request = new Request.Builder()
-                .url(HttpUrl.get(Constants.cameraModes.photoMode))
+                .url(HttpUrl.get(Constants.Commands.Modes.photoMode))
                 .build();
         final Request shutter_request = new Request.Builder()
-                .url(HttpUrl.get(Constants.Shutter.shutter))
+                .url(HttpUrl.get(Constants.Commands.Shutter.shutter))
                 .build();
 
         client.newCall(photo_mode_request).enqueue(new Callback() {
@@ -56,7 +56,7 @@ public class PhotoTile extends TileService {
 
             @Override public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"GoPro not connected!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Camera not connected!",Toast.LENGTH_SHORT).show();
                 }
                 getQsTile().setLabel("Taken!");
                 getQsTile().updateTile();

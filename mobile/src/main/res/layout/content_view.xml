@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/videoView2"
+        android:id="@+id/video_preview"
         android:layout_above="@+id/camera_status" />
 
     <Button

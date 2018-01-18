@@ -276,9 +276,132 @@ public class Constants {
 
             }
         }
+        public static class EVComp{
+            static String param="15";
+            public static URI EVMinus2_0 = URI.create(settingsUri(param,"8"));
+            public static URI EVMinus1_5 = URI.create(settingsUri(param,"7"));
+            public static URI EVMinus1_0 = URI.create(settingsUri(param,"6"));
+            public static URI EVMinus0_5 = URI.create(settingsUri(param,"5"));
+            public static URI EV0_0 = URI.create(settingsUri(param,"4"));
+            public static URI EV0_5 = URI.create(settingsUri(param,"3"));
+            public static URI EV1_0 = URI.create(settingsUri(param,"2"));
+            public static URI EV1_5 = URI.create(settingsUri(param,"1"));
+            public static URI EV2_0 = URI.create(settingsUri(param,"0"));
+
+        }
     }
 
     public static class Photo{
 
+        public static class ContinuousRate{
+            static String param="18";
+            public static URI C3PPS = URI.create(settingsUri(param,"0"));
+            public static URI C5PPS = URI.create(settingsUri(param,"1"));
+            public static URI C10PPS = URI.create(settingsUri(param,"2"));
+
+        }
+
+        public static class Resolution{
+            static String param="17";
+            public static URI R12MPW = URI.create(settingsUri(param,"0"));
+            public static URI R12MPL= URI.create(settingsUri(param,"10"));
+            public static URI R12MPM= URI.create(settingsUri(param,"8"));
+            public static URI R12MPN= URI.create(settingsUri(param,"9"));
+            public static URI R10MPW= URI.create(settingsUri(param,"4"));
+            public static URI R10MPL= URI.create(settingsUri(param,"11"));
+            public static URI R8MPW = URI.create(settingsUri(param,"0"));
+            public static URI R7MPW = URI.create(settingsUri(param,"1"));
+            public static URI R7MPM = URI.create(settingsUri(param,"2"));
+            public static URI R5MPM = URI.create(settingsUri(param,"3"));
+
+        }
+        public static class Shutter{
+            static String param="19";
+            public static URI ShutterAuto = URI.create(settingsUri(param,"0"));
+            public static URI Shutter2S = URI.create(settingsUri(param,"1"));
+            public static URI Shutter5S = URI.create(settingsUri(param,"2"));
+            public static URI Shutter10S = URI.create(settingsUri(param,"3"));
+            public static URI Shutter15S = URI.create(settingsUri(param,"4"));
+            public static URI Shutter20S = URI.create(settingsUri(param,"5"));
+            public static URI Shutter30S = URI.create(settingsUri(param,"6"));
+
+        }
+        public static class SpotMeter{
+            static String param="20";
+            public static URI ON = URI.create(settingsUri(param,"1"));
+            public static URI OFF = URI.create(settingsUri(param,"0"));
+
+        }
+        public static class WDR{
+            static String param="77";
+            public static URI ON = URI.create(settingsUri(param,"1"));
+            public static URI OFF = URI.create(settingsUri(param,"0"));
+
+        }
+        public static class RAW{
+            static String param="82";
+            public static URI ON = URI.create(settingsUri(param,"1"));
+            public static URI OFF = URI.create(settingsUri(param,"0"));
+
+        }
+        public static class Protune{
+            static String param="21";
+            public static URI ON = URI.create(settingsUri(param,"1"));
+            public static URI OFF = URI.create(settingsUri(param,"0"));
+
+        }
+        public static class WhiteBalance{
+            static String param="22";
+            public static URI WBAuto = URI.create(settingsUri(param,"0"));
+            public static URI WB3000K = URI.create(settingsUri(param,"1"));
+            public static URI WB4000K = URI.create(settingsUri(param,"5"));
+            public static URI WB4800K = URI.create(settingsUri(param,"6"));
+            public static URI WB5500K = URI.create(settingsUri(param,"2"));
+            public static URI WB6000K = URI.create(settingsUri(param,"7"));
+            public static URI WB6500K = URI.create(settingsUri(param,"3"));
+            public static URI WBNative = URI.create(settingsUri(param,"4"));
+
+        }
+        public static class Color{
+            static String param="23";
+            public static URI GoProColor = URI.create(settingsUri(param,"0"));
+            public static URI Flat = URI.create(settingsUri(param,"1"));
+
+        }
+        public static class Sharpness{
+            static String param="25";
+            public static URI High = URI.create(settingsUri(param,"0"));
+            public static URI Medium = URI.create(settingsUri(param,"1"));
+            public static URI Low = URI.create(settingsUri(param,"2"));
+
+        }
+        public static class EVComp{
+            static String param="26";
+            public static URI EVMinus2_0 = URI.create(settingsUri(param,"8"));
+            public static URI EVMinus1_5 = URI.create(settingsUri(param,"7"));
+            public static URI EVMinus1_0 = URI.create(settingsUri(param,"6"));
+            public static URI EVMinus0_5 = URI.create(settingsUri(param,"5"));
+            public static URI EV0_0 = URI.create(settingsUri(param,"4"));
+            public static URI EV0_5 = URI.create(settingsUri(param,"3"));
+            public static URI EV1_0 = URI.create(settingsUri(param,"2"));
+            public static URI EV1_5 = URI.create(settingsUri(param,"1"));
+            public static URI EV2_0 = URI.create(settingsUri(param,"0"));
+
+        }
+        public static class ISOMin{
+            static String param="75";
+            public static URI ISO800 = URI.create(settingsUri(param,"0"));
+            public static URI ISO400 = URI.create(settingsUri(param,"1"));
+            public static URI ISO200 = URI.create(settingsUri(param,"2"));
+            public static URI ISO100 = URI.create(settingsUri(param,"3"));
+
+        }
+        public static class ISOMax{
+            static String param="24";
+            public static URI ISO800 = URI.create(settingsUri(param,"0"));
+            public static URI ISO400 = URI.create(settingsUri(param,"1"));
+            public static URI ISO200 = URI.create(settingsUri(param,"2"));
+            public static URI ISO100 = URI.create(settingsUri(param,"3"));
+        }
     }
 }

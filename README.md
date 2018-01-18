@@ -1,6 +1,6 @@
 ## Action Cam Control App for Android
 
-Open source vendor agnostic client application to interface with most popular sports cameras (eg: GoPro, Sony, Garmin, Yi, Eken, SJCam, etc...).
+Open source vendor agnostic client application to interface with most popular sports cameras (eg: GoPro, Garmin, Yi, SJCam, etc...).
 
 ### Aims:
 
@@ -19,19 +19,16 @@ Open source vendor agnostic client application to interface with most popular sp
 ### Works with:
 
 - GoPro - [API](http://github.com/konradit/goprowifihack)
+- Xiaomi Yi
 
 ### Planned:
 
 - Sony ActionCam
-- RunCam
 - Garmin
-- Xiaomi Yi
-- Eken
 - SJcam
 - Other ChinaPro to be added
 
 ### Features:
-
 
 The app must *at least* have the following features regardless of camera used:
 

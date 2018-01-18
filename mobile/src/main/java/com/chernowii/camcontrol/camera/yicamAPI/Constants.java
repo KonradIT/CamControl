@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol.camera.sonyAPI;
+package com.chernowii.camcontrol.camera.yicamAPI;
 
 
 import java.net.URI;
@@ -8,35 +8,44 @@ import java.net.URI;
  */
 
 public class Constants {
-    public static String baseUri(String param, String val){
+    public static String baseUri(String param, String val) {
         return "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + val;
     }
+
+    public static class Commands {
+
     public static class Shutter {
         public static URI shutter = URI.create("http://10.5.5.9/gp/gpControl/command/shutter?p=1");
         public static URI stop = URI.create("http://10.5.5.9/gp/gpControl/command/shutter?p=0");
         public static URI hilight = URI.create("http://10.5.5.9/gp/gpControl/command/storage/tag_moment");
     }
-    public static class cameraModes {
+
+    public static class Modes {
         public static URI videoMode = URI.create("http://10.5.5.9/gp/gpControl/command/mode?p=0");
         public static URI photoMode = URI.create("http://10.5.5.9/gp/gpControl/command/mode?p=1");
         public static URI multishotMode = URI.create("http://10.5.5.9/gp/gpControl/command/mode?p=2");
+        public static class videoSubModes {
+            public static URI Video = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=0");
+            public static URI TimeLapseVideo = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=1");
+            public static URI VideoPlusPhoto = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=2");
+            public static URI Looping = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=3");
+        }
+
+        public static class photoSubModes {
+            public static URI Single = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=0");
+            public static URI Continuous = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=1");
+            public static URI Night = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=2");
+        }
+
+        public static class multiShotSubModes {
+            public static URI Burst = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=0");
+            public static URI Timelapse = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=1");
+            public static URI NightLapse = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=2");
+        }
     }
-    public static class videoSubModes {
-        public static URI Video = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=0");
-        public static URI TimeLapseVideo = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=1");
-        public static URI VideoPlusPhoto = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=2");
-        public static URI Looping = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=0&sub_mode=3");
-    }
-    public static class photoSubModes {
-        public static URI Single = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=0");
-        public static URI Continuous = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=1");
-        public static URI Night = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=1&sub_mode=2");
-    }
-    public static class multiShotSubModes {
-        public static URI Burst = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=0");
-        public static URI Timelapse = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=1");
-        public static URI NightLapse = URI.create("http://10.5.5.9/gp/gpControl/command/sub_mode?mode=2&sub_mode=2");
-    }
+
+
+}
     public static class Setup {
         public static class Orientation {
             public static URI Up = URI.create(baseUri("52", "1"));

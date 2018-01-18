@@ -2,9 +2,11 @@ package com.chernowii.camcontrol;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,15 +18,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.chernowii.camcontrol.camera.*;
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
+import com.github.hiteshsondhi88.libffmpeg.LoadBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
+import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegNotSupportedException;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.URI;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,9 +46,10 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    FFmpeg ffmpeg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -103,7 +115,7 @@ public class MainActivity extends AppCompatActivity
         camerabutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setContentView(R.layout.activity_view);
+                handleActivities(R.layout.activity_view);
             }
         });
         if(camID.equals(CameraList.TRY_AGAIN)){
@@ -123,37 +135,86 @@ public class MainActivity extends AppCompatActivity
 
     public void handleActivities(int layout){
         setContentView(layout);
-        if(layout == R.layout.activity_view){
-            //start FFmpeg
-            FFmpeg ffmpeg = FFmpeg.getInstance(getApplicationContext());
+        if(layout == R.layout.activity_view) {
+            ffmpeg = FFmpeg.getInstance(getApplicationContext());
             try {
-                // to execute "ffmpeg -version" command you just need to pass "-version"
-                final String localAddress = "udp://127.0.0.1:10000";
-                ffmpeg.execute(new String[]{"-f", "mpegts", "-i", "udp://10.5.5.9:8554", "-b", "800k", "-r", "30", "-f", "mpegts", localAddress}, new ExecuteBinaryResponseHandler() {
+                ffmpeg.loadBinary(new LoadBinaryResponseHandler() {
 
                     @Override
-                    public void onStart() {}
-
-                    @Override
-                    public void onProgress(String message) {
-                        VideoView preview = (VideoView)findViewById(R.id.video_preview);
-                        preview.setVideoURI(Uri.parse(localAddress));
-                        preview.setVideoPath(localAddress);
+                    public void onStart() {
                     }
 
                     @Override
-                    public void onFailure(String message) {}
+                    public void onFailure() {
+                    }
 
                     @Override
-                    public void onSuccess(String message) {}
+                    public void onSuccess() {
+                        startStream();
+                    }
 
                     @Override
-                    public void onFinish() {}
+                    public void onFinish() {
+                    }
                 });
-            } catch (FFmpegCommandAlreadyRunningException e) {
-                // Handle if FFmpeg is already running
+            } catch (FFmpegNotSupportedException e) {
+                // Handle if FFmpeg is not supported by device
             }
         }
+            //start FFmpeg
+
+    }
+    public static String getPath() {
+        checkAndMakeFolder();
+        File folder = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "GOPRO");
+        File file = new File(folder, "temp.avi");
+        return file.getAbsolutePath();
+    }
+    private static void checkAndMakeFolder() {
+        File folder = new File(Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "GOPRO");
+        if (!folder.exists()) {
+            Log.i("TAG", "Folder not found, creating.");
+            folder.mkdir();
+        } else {
+            Log.i("TAG", "Folder found.");
+        }
+    }
+    public void startStream(){
+        try {
+            // to execute "ffmpeg -version" command you just need to pass "-version"
+            final String localAddress = getPath();
+            ffmpeg.execute(new String[]{"-i", "udp://:8554"}, new ExecuteBinaryResponseHandler() {
+
+                @Override
+                public void onStart() {}
+
+                @Override
+                public void onProgress(String msg) {
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onSuccess(String message) {
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFinish() {
+
+                }
+            });
+        } catch (FFmpegCommandAlreadyRunningException e) {
+            // Handle if FFmpeg is already running
+        }
+
     }
     @Override
     public void onBackPressed() {
@@ -209,7 +270,7 @@ public class MainActivity extends AppCompatActivity
             navigationView.setItemBackgroundResource(R.drawable.drawer_list_selector);
             navigationView.setNavigationItemSelectedListener(this);
         } else if (id == R.id.nav_view) {
-            setContentView(R.layout.activity_view);
+            handleActivities(R.layout.activity_view);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

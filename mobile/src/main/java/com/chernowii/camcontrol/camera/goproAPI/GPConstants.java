@@ -7,7 +7,7 @@ import java.net.URI;
  * Created by konrad on 1/2/17.
  */
 
-public class Constants {
+public class GPConstants {
     public static String settingsUri(String param, String val) {
         return "http://10.5.5.9/gp/gpControl/setting/" + param + "/" + val;
     }
@@ -18,7 +18,9 @@ public class Constants {
         return "http://10.5.5.9/gp/gpControl/execute" + param;
     }
     public static class Commands {
-
+    public static class Stream{
+        public static URI Restart = URI.create(executeUri("?p1=gpStream&a1=proto_v2&c1=restart"));
+    }
     public static class Shutter {
         public static URI shutter = URI.create(commandUri("shutter?p=1"));
         public static URI stop = URI.create(commandUri("shutter?p=0"));

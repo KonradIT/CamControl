@@ -11,7 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_view"
     tools:context="com.chernowii.camcontrol.MainActivity">
 
 
@@ -31,13 +30,47 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/rec_status" />
 
-    <VideoView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/setQuality"
+        android:text="set hq/sd"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop"
+        android:id="@+id/stoppreviewbtn"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/video_preview"
-        android:layout_above="@+id/camera_status" />
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="restart"
+        android:id="@+id/startPreview"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <!--
+
+    <com.devbrackets.android.exomedia.ui.widget.VideoView
+        android:id="@+id/streamView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:useDefaultControls="true"
+        android:layout_below="@id/startStream"/>
+    -->
+    <!--
+<org.videolan.libvlc.media.VideoView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/VLC"
+    android:layout_below="@+id/startStream" />
+-->
+    <SurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/surface"
+        android:layout_below="@+id/setQuality" />
 
     <Button
         android:text="SHUTTER"

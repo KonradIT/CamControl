@@ -14,7 +14,7 @@ Open source vendor agnostic client application to interface with most popular sp
 
 *Disclaimer: Not a designer.*
 
-![](https://i.imgur.com/6NyLUrL.png)
+![](sketch.png)
 
 ### Works with:
 

@@ -10,4 +10,29 @@
     <string name="shortcut_off">Turn off</string>
     <string name="shortcut_disabled">Disabled</string>
     <string name="photo_tile_title">Take Photo</string>
+    <string name="title_activity_media_browser">Camera Media</string>
+
+    <string name="appselection_gopro">GoPro</string>
+    <string name="appselection_xiaoyi">Xiaomi</string>
+    <string name="appselection_sjcam">Sjcam</string>
+    <string name="appselection_garmin">Garmin</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Preview what\'s going on</string>
+    <string name="slide_1_desc">Supported on GoPro, Xiaomi cameras. You can choose resolution and bitrate</string>
+
+    <string name="slide_2_title">Download your videos and photos</string>
+    <string name="slide_2_desc">Sorting and deleting also available</string>
+
+    <string name="slide_3_title">Control at your fingertips</string>
+    <string name="slide_3_desc">Start/stop recording, change modes, set tags, change all settings, locate camera and more</string>
+
+    <string name="slide_4_title">Keeping it simple</string>
+    <string name="slide_4_desc">No login required, no cloud, no back doors, no analytics, no bullshit</string>
+    <string name="play_again_desc">Enjoy!</string>
+    <string name="play_again">Play Again</string>
+    <string name="title_activity_camera">CameraActivity</string>
 </resources>

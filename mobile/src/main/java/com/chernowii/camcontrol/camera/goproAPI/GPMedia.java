@@ -4,7 +4,7 @@ package com.chernowii.camcontrol.camera.goproAPI;
  * Created by konrad on 5/13/17.
  */
 
-public class Media {
+public class GPMedia {
     public void listMedia(){
         //http://10.5.5.9/gp/gpMediaList
     }

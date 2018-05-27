@@ -43,10 +43,10 @@ public class PhotoTile extends TileService {
     public void onClick() {
         Log.d(LOG_TAG, "onClick state = " + Integer.toString(getQsTile().getState()));
         final Request photo_mode_request = new Request.Builder()
-                .url(HttpUrl.get(Constants.Commands.Modes.photoMode))
+                .url(HttpUrl.get(GPConstants.Commands.Modes.photoMode))
                 .build();
         final Request shutter_request = new Request.Builder()
-                .url(HttpUrl.get(Constants.Commands.Shutter.shutter))
+                .url(HttpUrl.get(GPConstants.Commands.Shutter.shutter))
                 .build();
 
         client.newCall(photo_mode_request).enqueue(new Callback() {

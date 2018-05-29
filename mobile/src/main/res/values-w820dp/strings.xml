@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">About</string>
+    <string name="library_license">Licenses</string>
+    <string name="appsettings">Settings</string>
+</resources>

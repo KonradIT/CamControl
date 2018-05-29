@@ -46,6 +46,14 @@
         <activity
             android:name=".view.CameraActivity"
             android:label="@string/title_activity_camera"></activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_settings"></activity>
+
+        <activity
+            android:name=".AboutApp"
+            android:label="@string/title_aboutapp"></activity>
     </application>
 
 </manifest>

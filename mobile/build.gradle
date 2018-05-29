@@ -38,5 +38,6 @@ dependencies {
     compile 'com.github.armcha:SpaceNavigationView:1.6.0'
     compile 'de.mrmaffen:libvlc-android:2.1.12@aar'
     compile 'com.github.gabrielemariotti.changeloglib:changelog:2.1.0'
+    compile 'com.github.medyo:android-about-page:1.2.4'
 
 }

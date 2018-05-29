@@ -2,6 +2,7 @@ package com.chernowii.camcontrol.view;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.chernowii.camcontrol.R;
@@ -17,8 +18,16 @@ public class CameraActivity extends Activity {
         setContentView(R.layout.activity_camera);
         SpaceNavigationView spaceNavigationView = (SpaceNavigationView) findViewById(R.id.space);
         spaceNavigationView.initWithSaveInstanceState(savedInstanceState);
-        spaceNavigationView.addSpaceItem(new SpaceItem("HOME", R.drawable.ic_mediabrowse));
-        spaceNavigationView.addSpaceItem(new SpaceItem("SEARCH", R.drawable.ic_controlicon));
+        spaceNavigationView.setCentreButtonIcon(R.drawable.ic_preview_btn);
+        spaceNavigationView.addSpaceItem(new SpaceItem("MEDIA", R.drawable.ic_mediabrowse));
+        spaceNavigationView.addSpaceItem(new SpaceItem("SETTINGS", R.drawable.ic_controlicon));
+        spaceNavigationView.showIconOnly();
+        spaceNavigationView.setSpaceItemIconSize((int) getResources().getDimension(R.dimen.bottom_bar_ic));
+        spaceNavigationView.setSpaceBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        spaceNavigationView.setCentreButtonColor(ContextCompat.getColor(this, R.color.colorAccent));
+
+        spaceNavigationView.setActiveSpaceItemColor(ContextCompat.getColor(this, R.color.space_white));
+        spaceNavigationView.setInActiveSpaceItemColor(ContextCompat.getColor(this, R.color.space_white));
         spaceNavigationView.setSpaceOnClickListener(new SpaceOnClickListener() {
             @Override
             public void onCentreButtonClick() {

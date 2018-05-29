@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Sync Information"
+        android:key="sync_category">
+
+        <CheckBoxPreference
+            android:key="theme_dark"
+            android:summary="Enable or disable dark theme"
+            android:title="Enable dark theme"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Personal Informations"
+        android:key="personal_category">
+
+
+        <EditTextPreference
+            android:key="full_name"
+            android:title="Name"
+            android:summary="Enter Your Complete Name"
+            android:dialogTitle="Your Name"
+            android:dialogMessage="Enter Your Complete Name"
+            android:defaultValue="Konrad"
+            android:inputType="textCapWords"/>
+
+        <EditTextPreference
+            android:key="email_address"
+            android:title="Email Address"
+            android:summary="Enter Your Email Address"
+            android:dialogTitle="Enter Your Email Address"
+            android:dialogMessage="Enter Your Email Address"
+            android:defaultValue="mail@chernowii.com"
+            android:inputType="textEmailAddress"/>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:title="Customisations"
+        android:key="custom_category">
+
+
+        <RingtonePreference
+            android:key="notification_ringtone"
+            android:title="Notification Ringtone"
+            android:summary="Customise Notification Ringtone for you"
+            android:dialogTitle="Notification Ringtone"
+            android:dialogMessage="Customise Notification Ringtone for you"/>
+
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

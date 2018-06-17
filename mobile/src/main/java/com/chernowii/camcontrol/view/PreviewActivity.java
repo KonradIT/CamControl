@@ -19,8 +19,10 @@ import android.widget.Toast;
 
 import com.chernowii.camcontrol.R;
 
-import com.chernowii.camcontrol.camera.goproAPI.GPCamera;
+import com.chernowii.camcontrol.camera.goproAPI.ApiBase;
+import com.chernowii.camcontrol.camera.goproAPI.ApiClient;
 import com.chernowii.camcontrol.camera.goproAPI.model.GPConstants;
+import com.chernowii.camcontrol.camera.goproAPI.model.GoProResponse;
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
@@ -33,6 +35,10 @@ import org.videolan.libvlc.MediaPlayer;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by konrad on 2/18/18.
@@ -179,12 +185,32 @@ public class PreviewActivity extends AppCompatActivity implements IVLCVout.Callb
 
     void GoProSet(String param, String value){
 
+        ApiClient GoProApi = ApiBase.getMainClient().create(ApiClient.class);
+        Call<GoProResponse> setting = GoProApi.config(param, value);
+        setting.enqueue(new Callback<GoProResponse>() {
+            @Override
+            public void onResponse(Call<GoProResponse> call, Response<GoProResponse> response) {
+                Log.d("LOG",response.message()); }
+
+            @Override
+            public void onFailure(Call<GoProResponse> call, Throwable t) {
+            }
+
+        });
     }
     void Stream(){
 
-        //Call http://10.5.5.9/gp/gpControl/execute?p1=gpStream&a1=proto_v2&c1=restart
+        Call<GoProResponse> takePhoto = GPConstants.Commands.Stream.Restart;
+        takePhoto.enqueue(new Callback<GoProResponse>() {
+            @Override
+            public void onResponse(Call<GoProResponse> call, Response<GoProResponse> response) {
+                Log.d("LOG",response.message()); }
 
-        GPCamera.sendCommand(GPConstants.Commands.Stream.Restart);
+            @Override
+            public void onFailure(Call<GoProResponse> call, Throwable t) {
+                }
+
+        });
         try {
             String[] cmd = {"-f", "mpegts", "-i", "udp://:8554", "-f", "mpegts","udp://127.0.0.1:8555/gopro?pkt_size=64"};
             FFmpeg ffmpeg = FFmpeg.getInstance(getApplicationContext());
@@ -196,14 +222,14 @@ public class PreviewActivity extends AppCompatActivity implements IVLCVout.Callb
                     count += 1;
                     if(count == 7){
                         count = 0;
-                        GPCamera.sendCommand(GPConstants.Commands.Stream.Restart);
+                        Call<GoProResponse> takePhoto = GPConstants.Commands.Stream.Restart;
                     }
                 }
 
                 @Override
                 public void onProgress(String message) {
                     Log.d("FFmpeg",message);
-                    GPCamera.sendCommand(GPConstants.Commands.Stream.Restart);
+                    Call<GoProResponse> takePhoto = GPConstants.Commands.Stream.Restart;
 
                 }
 

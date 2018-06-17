@@ -6,16 +6,18 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.chernowii.camcontrol.camera.goproAPI.ApiBase;
+import com.chernowii.camcontrol.camera.goproAPI.ApiClient;
 import com.chernowii.camcontrol.camera.goproAPI.model.GPConstants;
+import com.chernowii.camcontrol.camera.goproAPI.model.GoProResponse;
 
 import java.io.IOException;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.GET;
 
 /**
  * Created by konrad on 1/2/17.
@@ -26,8 +28,6 @@ public class PhotoTile extends TileService {
     private final int STATE_OFF = 0;
     private final int STATE_ON = 1;
     private final String LOG_TAG = "MyTileService";
-    private int toggleState = STATE_ON;
-    private final OkHttpClient client = new OkHttpClient();
 
     @Override
     public void onTileAdded() {
@@ -42,44 +42,26 @@ public class PhotoTile extends TileService {
     @Override
     public void onClick() {
         Log.d(LOG_TAG, "onClick state = " + Integer.toString(getQsTile().getState()));
-        final Request photo_mode_request = new Request.Builder()
-                .url(HttpUrl.get(GPConstants.Commands.Modes.photoMode))
-                .build();
-        final Request shutter_request = new Request.Builder()
-                .url(HttpUrl.get(GPConstants.Commands.Shutter.shutter))
-                .build();
+        Call<GoProResponse> takePhoto = GPConstants.Commands.Shutter.shutter;
+        takePhoto.enqueue(new Callback<GoProResponse>() {
 
-        client.newCall(photo_mode_request).enqueue(new Callback() {
-            @Override public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
 
-            @Override public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Camera not connected!",Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onResponse(Call<GoProResponse> call, Response<GoProResponse> response) {
+                Log.d("LOG",response.message());
                 getQsTile().setLabel("Taken!");
                 getQsTile().updateTile();
-                client.newCall(shutter_request).enqueue(new Callback() {
-                    @Override public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                    }
+            }
 
-                    @Override public void onResponse(Call call, Response response) throws IOException {
-                        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-                        getQsTile().setLabel("Take Photo");
-                        getQsTile().updateTile();
-
-                    }
-                });
+            @Override
+            public void onFailure(Call<GoProResponse> call, Throwable t) {
 
             }
-        });
-        //send command
+
+                });
+
 
     }
-
     @Override
     public void onStartListening () {
         Log.d(LOG_TAG, "onStartListening");

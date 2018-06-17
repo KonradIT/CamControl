@@ -1,6 +1,11 @@
 package com.chernowii.camcontrol.camera.goproAPI.model;
 
+import com.chernowii.camcontrol.camera.goproAPI.ApiBase;
+import com.chernowii.camcontrol.camera.goproAPI.ApiClient;
+
 import java.net.URI;
+
+import retrofit2.Call;
 
 /**
  * Created by konrad on 5/13/17.
@@ -9,6 +14,15 @@ import java.net.URI;
 public class GPLive {
     public static final String LiveResource = "udp://10.5.5.9:8554";
     public static final void startPreview(){
-        URI command = URI.create(GPConstants.executeUri("?p1=gpStream&a1=proto_v2&c1=restart"));
+        ApiClient GoProApi = ApiBase.getMainClient().create(ApiClient.class);
+        Call<GoProResponse> streamOn = GoProApi.execute("?p1=gpStream&a1=proto_v2&c1=restart");
+    }
+
+    public static class Bitrate{
+
+    }
+
+    public static class Resolution{
+
     }
 }

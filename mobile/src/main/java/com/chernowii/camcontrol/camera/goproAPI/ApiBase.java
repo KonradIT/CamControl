@@ -15,7 +15,7 @@ public class ApiBase {
     private static Retrofit GoProMainAPI = null;
     private static Retrofit GoProMediaAPI = null;
 
-    static Retrofit getMainClient() {
+    public static Retrofit getMainClient() {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -28,7 +28,7 @@ public class ApiBase {
         return GoProMainAPI;
     }
 
-    static Retrofit getMediaClient() {
+    public static Retrofit getMediaClient() {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

@@ -1,7 +1,9 @@
-package com.chernowii.camcontrol;
+package com.chernowii.camcontrol.activity;
 
 import android.preference.PreferenceActivity;
 import android.os.Bundle;
+
+import com.chernowii.camcontrol.R;
 
 public class SettingsActivity extends PreferenceActivity {
 

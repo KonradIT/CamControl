@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol;
+package com.chernowii.camcontrol.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chernowii.camcontrol.R;
 import com.chernowii.camcontrol.util.PreferenceStorage;
 
 public class WelcomeActivity extends AppCompatActivity {

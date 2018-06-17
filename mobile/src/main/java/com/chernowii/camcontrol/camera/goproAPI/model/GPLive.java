@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol.camera.goproAPI;
+package com.chernowii.camcontrol.camera.goproAPI.model;
 
 import java.net.URI;
 

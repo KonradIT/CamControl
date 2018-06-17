@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol;
+package com.chernowii.camcontrol.activity;
 
 import android.content.Intent;
 import android.net.Uri;

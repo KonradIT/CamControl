@@ -48,3 +48,17 @@ I maintain the GoPro Wifi API and I will be doing the GoPro support, if you want
 	- Live.java: This should have a function called ```getStream``` that returns a Uri or a Video that ExoPlayer can play.
 	- Media.java: Many cameras have a media front end in their IP addresses with port 8080, you'll need the URL the vendor app uses, for GoPro for instance its a JSON. It should have a ```mediaURL``` Uri and a function called ```getMedia()``` which returns an array with the URLs of the photos and videos.
 	- Status.java: Should be a list of Strings or integers with an appropiate Status name.
+
+### License & Libaries used
+
+- [com.getkeepsafe.taptargetview:taptargetview]([com.getkeepsafe.taptargetview:taptargetview]()
+)
+- [com.github.armcha:SpaceNavigationView](https://github.com/armcha/Space-Navigation-View)
+- [de.mrmaffen:libvlc-android](https://github.com/mrmaffen/vlc-android-sdk)
+- [com.github.gabrielemariotti.changeloglib](https://github.com/gabrielemariotti/changeloglib)
+- [com.github.medyo:android-about-page](https://github.com/medyo/android-about-page)
+
+### Patreon & PayPal:
+
+- [PayPal](http://paypal.me/konraditurbe)
+- [Patreon](https://www.patreon.com/konraditurbe)

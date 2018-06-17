@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol.camera.goproAPI;
+package com.chernowii.camcontrol.camera.goproAPI.model;
 
 /**
  * Created by konrad on 5/13/17.

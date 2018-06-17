@@ -29,7 +29,15 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.4.0'
     compile 'com.android.support:design:25.4.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
+
+    compile ('com.squareup.retrofit2:retrofit:2.1.0') {
+        exclude module: 'okhttp'
+    }
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.9.1'
+
     //For GoPro HERO4 and newer:
     compile 'com.writingminds:FFmpegAndroid:0.3.2'
     // ExoPlayer Lib: compile 'com.devbrackets.android:exomedia:4.0.3'

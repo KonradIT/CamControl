@@ -1,4 +1,4 @@
-package com.chernowii.camcontrol;
+package com.chernowii.camcontrol.activity;
 
 import android.os.Build;
 import android.service.quicksettings.TileService;
@@ -6,7 +6,7 @@ import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.chernowii.camcontrol.camera.goproAPI.*;
+import com.chernowii.camcontrol.camera.goproAPI.model.GPConstants;
 
 import java.io.IOException;
 

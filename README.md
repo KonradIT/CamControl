@@ -1,5 +1,8 @@
 ## Action Cam Control App for Android
 
+![banner](https://user-images.githubusercontent.com/40510200/46581317-0e97b400-ca69-11e8-8cd4-b1702fed6051.png)
+
+
 Open source vendor agnostic client application to interface with most popular sports cameras (eg: GoPro, Garmin, Yi, SJCam, etc...).
 
 ### Aims:

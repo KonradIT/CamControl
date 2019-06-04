@@ -5,27 +5,20 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.chernowii.camcontrol.R
 import com.chernowii.camcontrol.util.PreferenceStorage
 
 class WelcomeActivity : AppCompatActivity() {
     private var viewPager: ViewPager? = null
     private var myViewPagerAdapter: MyViewPagerAdapter? = null
-    private var dotsLayout: LinearLayout? = null
-    private var dots: Array<TextView>? = null
     private var layouts: IntArray? = null
     private var btnSkip: Button? = null
     private var btnNext: Button? = null
@@ -35,7 +28,7 @@ class WelcomeActivity : AppCompatActivity() {
     internal var viewPagerPageChangeListener: ViewPager.OnPageChangeListener = object : ViewPager.OnPageChangeListener {
 
         override fun onPageSelected(position: Int) {
-            addBottomDots(position)
+            //addBottomDots(position)
 
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts!!.size - 1) {
@@ -76,7 +69,6 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_welcome)
 
         viewPager = findViewById(R.id.view_pager) as ViewPager
-        dotsLayout = findViewById(R.id.layoutDots) as LinearLayout
         btnSkip = findViewById(R.id.btn_skip) as Button
         btnNext = findViewById(R.id.btn_next) as Button
 
@@ -86,7 +78,7 @@ class WelcomeActivity : AppCompatActivity() {
         layouts = intArrayOf(R.layout.welcome_screen_1, R.layout.welcome_screen_2, R.layout.welcome_screen_3, R.layout.welcome_screen_4)
 
         // adding bottom dots
-        addBottomDots(0)
+        // addBottomDots(0)
 
         // making notification bar transparent
         changeStatusBarColor()
@@ -108,24 +100,6 @@ class WelcomeActivity : AppCompatActivity() {
                 launchHomeScreen()
             }
         }
-    }
-
-    private fun addBottomDots(currentPage: Int) {
-
-        val colorsActive = resources.getIntArray(R.array.array_dot_active)
-        val colorsInactive = resources.getIntArray(R.array.array_dot_inactive)
-
-        dotsLayout!!.removeAllViews()
-        for (i in dots!!.indices) {
-            dots!![i] = TextView(this)
-            dots!![i].text = Html.fromHtml("&#8226;")
-            dots!![i].textSize = 35f
-            dots!![i].setTextColor(colorsInactive[currentPage])
-            dotsLayout!!.addView(dots!![i])
-        }
-
-        if (dots!!.size > 0)
-            dots!![currentPage].setTextColor(colorsActive[currentPage])
     }
 
     private fun getItem(i: Int): Int {
